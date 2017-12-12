@@ -7,7 +7,7 @@
     tools:context="com.example.snakka.kdproconjoinapp.SettingsActivity">
 
     <TextView
-        android:id="@+id/lastNameText"
+        android:id="@+id/firstNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="64dp"
@@ -16,10 +16,10 @@
         android:text="名前(名)"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstNameText" />
+        app:layout_constraintTop_toBottomOf="@+id/familyNameText" />
 
     <EditText
-        android:id="@+id/lastNameEdit"
+        android:id="@+id/firstNameEdit"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -27,9 +27,9 @@
         android:layout_marginTop="0dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/lastNameText"
-        app:layout_constraintLeft_toLeftOf="@+id/firstNameEdit"
-        app:layout_constraintTop_toTopOf="@+id/lastNameText" />
+        app:layout_constraintBottom_toBottomOf="@+id/firstNameText"
+        app:layout_constraintLeft_toLeftOf="@+id/familyNameEdit"
+        app:layout_constraintTop_toTopOf="@+id/firstNameText" />
 
     <Spinner
         android:id="@+id/classNoSpinner"
@@ -103,19 +103,19 @@
         android:layout_marginStart="64dp" />
 
     <EditText
-        android:id="@+id/firstNameEdit"
+        android:id="@+id/familyNameEdit"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="0dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/firstNameText"
+        app:layout_constraintBottom_toBottomOf="@+id/familyNameText"
         app:layout_constraintLeft_toLeftOf="@+id/classNoSpinner"
-        app:layout_constraintTop_toTopOf="@+id/firstNameText"
+        app:layout_constraintTop_toTopOf="@+id/familyNameText"
         app:layout_constraintVertical_bias="0.523" />
 
     <TextView
-        android:id="@+id/firstNameText"
+        android:id="@+id/familyNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="64dp"
@@ -134,7 +134,8 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="64dp"
         android:text="Save"
+        android:onClick="onClickSave"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastNameText" />
+        app:layout_constraintTop_toBottomOf="@+id/firstNameText" />
 </android.support.constraint.ConstraintLayout>
