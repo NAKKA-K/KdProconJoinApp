@@ -3,6 +3,7 @@ package com.example.snakka.kdproconjoinapp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -23,6 +24,7 @@ public class SharedPreferenceAccessor {
                 || preferences.getString(CLASS_NO_KEY, null) == null
                 || preferences.getString(FIRST_NAME_KEY, null) == null
                 || preferences.getString(FAMILY_NAME_KEY, null) == null) {
+            Toast.makeText(AppContextMgr.getContext(), "ユーザー情報が未設定です", Toast.LENGTH_LONG).show();
             return false;
         }
         return true;
@@ -40,6 +42,8 @@ public class SharedPreferenceAccessor {
                 editor.putString(key, userStatus.get(key));
             }
         }
+        editor.commit();
+
         return true;
     }
 
