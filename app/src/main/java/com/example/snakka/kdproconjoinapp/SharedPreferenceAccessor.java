@@ -1,6 +1,5 @@
 package com.example.snakka.kdproconjoinapp;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
