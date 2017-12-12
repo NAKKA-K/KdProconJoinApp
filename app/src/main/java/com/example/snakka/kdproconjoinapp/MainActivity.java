@@ -1,6 +1,7 @@
 package com.example.snakka.kdproconjoinapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -57,7 +58,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickJoin(View view){
-        //TODO: DBに登録されているか？
+        if(SharedPreferenceAccessor.isRegisteredUser(view.getContext()) == false){
+            Intent intentToSettings = new Intent(this, SettingsActivity.class);
+            startActivity(intentToSettings);
+            return;
+        }
+
+        //TODO: サーバーにjoinを送る
     }
 
 }
