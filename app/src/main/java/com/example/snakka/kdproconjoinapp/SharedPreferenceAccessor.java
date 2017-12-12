@@ -11,8 +11,9 @@ public class SharedPreferenceAccessor {
     private static final String FIRST_NAME_KEY = "first_name_key";
     private static final String FAMILY_NAME_KEY = "family_name_key";
 
-    public static Boolean isRegisteredUser(Context context){
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+
+    public static Boolean isRegisteredUser(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(AppContextMgr.getContext());
 
         if(preferences.getString(DEPARTMENT_KEY, null) == null
                 || preferences.getString(SCHOOL_YEAR_KEY, null) == null
@@ -22,5 +23,13 @@ public class SharedPreferenceAccessor {
             return false;
         }
         return true;
+    }
+
+    public static void commitUserStatusStr(String department, String schoolYear, String classNo, String firstName, String familyName){
+
+        if(department != null){
+
+        }
+
     }
 }

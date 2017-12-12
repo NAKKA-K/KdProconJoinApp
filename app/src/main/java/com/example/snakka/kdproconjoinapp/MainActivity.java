@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        AppContextMgr.onCreateApplication(getApplicationContext());
+
 
         //画面右下のアイコンをタップしたときの動作
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickJoin(View view){
-        if(SharedPreferenceAccessor.isRegisteredUser(view.getContext()) == false){
+        if(SharedPreferenceAccessor.isRegisteredUser() == false){
             Intent intentToSettings = new Intent(this, SettingsActivity.class);
             startActivity(intentToSettings);
             return;
