@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 public class SettingsActivity extends AppCompatActivity {
     Spinner departmentSpinner;
     Spinner schoolYearSpinner;
@@ -34,7 +36,17 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         //データ保存
+        HashMap<String, String> userStatus = new HashMap<>();
+        userStatus.put(SharedPreferenceAccessor.DEPARTMENT_KEY, departmentSpinner.getSelectedItem().toString());
+        userStatus.put(SharedPreferenceAccessor.SCHOOL_YEAR_KEY, schoolYearSpinner.getSelectedItem().toString());
+        userStatus.put(SharedPreferenceAccessor.CLASS_NO_KEY, classNoSpinner.getSelectedItem().toString());
+        userStatus.put(SharedPreferenceAccessor.FAMILY_NAME_KEY, familyNameEdit.getText().toString());
+        userStatus.put(SharedPreferenceAccessor.FIRST_NAME_KEY, firstNameEdit.getText().toString());
 
+        if(SharedPreferenceAccessor.commitUserStatusStr(userStatus) == false){
+            Toast.makeText(this, "保存に失敗しました", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         finish();
     }
