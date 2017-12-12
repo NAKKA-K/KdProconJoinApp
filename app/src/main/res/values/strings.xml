@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">KDProconJoinApp</string>
     <string name="action_settings">Settings</string>
+    <string-array name="department">
+        <item>IT</item>
+        <item>ゲーム</item>
+        <item>Web</item>
+    </string-array>
+    <string-array name="schoolYear">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="classNo">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
 </resources>
