@@ -36,7 +36,7 @@
         android:id="@+id/classNoSpinner"
         android:layout_width="160dp"
         android:layout_height="21dp"
-        android:entries="@array/schoolYear"
+        android:entries="@array/classNo"
         app:layout_constraintBottom_toBottomOf="@+id/classNoText"
         app:layout_constraintLeft_toLeftOf="@+id/schoolYearSpinner"
         app:layout_constraintTop_toTopOf="@+id/classNoText"
