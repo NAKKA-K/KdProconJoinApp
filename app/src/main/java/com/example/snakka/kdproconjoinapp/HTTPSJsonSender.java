@@ -7,15 +7,12 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
+import javax.net.ssl.HttpsURLConnection;
 
 public class HTTPSJsonSender {
-    private static final String PROTOCOL = "https";
-    private static final String HOST = "kdproconjoin.herokuapp.com";
-    private static final int PORT = 3000;
-    private static final String FILEPATH = "join/api/";
 
     public static void postJoinToServer(final String postJsonData){
         new AsyncTask<Void, String, Boolean>() {
@@ -64,32 +61,30 @@ public class HTTPSJsonSender {
     /** HTTP通信でPOSTをするときに、JSONのデータを送るメソッド */
     public static int postJsonByHTTPS(String postJsonData){
         PrintStream outputServer = null;
-        HttpURLConnection httpConnector = null;
         int resCode = 0;
 
         try {
-            URL url = new URL(PROTOCOL, HOST, PORT, FILEPATH);
-            httpConnector = (HttpURLConnection) url.openConnection();
-            httpConnector.setRequestMethod("POST");
-            httpConnector.setDoOutput(true);
-            httpConnector.setRequestProperty("Content-Type", "application/json");
-            httpConnector.setRequestProperty("Accept", "application/json");
+            URL url = new URL("https://kdproconjoin.herokuapp.com/join/api/");
+            URLConnection urlConnection = url.openConnection();
+            urlConnection.setDoOutput(true);
+            urlConnection.setRequestProperty("Content-Type", "application/json");
+            urlConnection.setRequestProperty("Accept", "application/json");
 
-            httpConnector.connect();
+            urlConnection.connect();
 
             //JSONをString型で送信
-            outputServer = new PrintStream(httpConnector.getOutputStream());
+            outputServer = new PrintStream(urlConnection.getOutputStream());
             outputServer.print(postJsonData);
             outputServer.flush();
 
-            resCode = httpConnector.getResponseCode();
+            //レスポンスコードを取得するために、型を変換する必要があった
+            resCode = ((HttpsURLConnection)urlConnection).getResponseCode();
         } catch (MalformedURLException e) {
             Log.e("例外発生", "URLが不正です", e);
         } catch (IOException e) {
             Log.e("例外発生", "接続失敗", e);
         } finally {
             if (outputServer != null) outputServer.close();
-            if (httpConnector != null) httpConnector.disconnect();
         }
 
         return resCode;
