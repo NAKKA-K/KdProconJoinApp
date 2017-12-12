@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //TODO: onCreateに配置しているので、編集してすぐに反映されない
         viewUserStatus(SharedPreferenceAccessor.getUserStatus());
     }
 
