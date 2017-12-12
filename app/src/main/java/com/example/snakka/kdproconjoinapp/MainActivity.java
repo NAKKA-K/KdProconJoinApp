@@ -70,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        Snackbar.make(view, "サーバーにデータを送信しています", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+
         //TODO: サーバーにjoinを送る
         HTTPSJsonSender.postJoinToServer(SharedPreferenceAccessor.getUserOfJson());
     }
