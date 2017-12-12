@@ -31,7 +31,10 @@ public class HTTPSJsonSender {
             private boolean isSuccess(int resCode){ //TODO:既存、登録、その他の3種類くらいで、条件分けする予定
                 Log.d("ResCode", "HTTP通信で返ってきた値は" + resCode);
 
-                if(resCode / 100 == 2){
+                if(resCode == 0){
+                    publishProgress("ネットワークエラーです");
+                }else if(resCode / 100 == 2){
+                    publishProgress("JOINしました");
                     return true;
                 }else if(resCode / 100 == 4){
                     publishProgress("アプリケーションエラーです");
